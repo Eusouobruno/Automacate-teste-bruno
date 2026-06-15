@@ -1,0 +1,25 @@
+import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
+
+Given("que estou na página de login", () => {
+  cy.visit("https://www.automationexercise.com/login");
+});
+
+When("informo um e-mail válido", () => {
+  cy.get('[data-qa="login-email"]')
+    .type("teste2021@teste.com.br");
+});
+
+When("informo uma senha válida", () => {
+  cy.get('[data-qa="login-password"]')
+    .type("teste");
+});
+
+When("clico em Login", () => {
+  cy.get('[data-qa="login-button"]')
+    .click();
+});
+
+Then("devo acessar minha conta", () => {
+  cy.contains("Logged in as")
+    .should("be.visible");
+});
